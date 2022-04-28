@@ -9,7 +9,7 @@ $adm = $pdo->query('Select Codigo, Nome from usuarios where Login = "'.$us.'" an
 // ------------------------------
 if (!$adm['Codigo']) {
    echo '<b>Usuário não existe ou senha inválida.</b>';
-   echo '<br><a href="userLogin.html">Voltar</a>';
+   echo '<br><a href="userLogin.php">Voltar</a>';
    
 } else {
 

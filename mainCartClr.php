@@ -61,17 +61,17 @@
                 <ul class="navbar-nav flex-grow-1">
 
                     <li class="nav-item">
-                        <a href="/g2Oficial/contato.html" class="nav-link text-white">Contato</a>
+                        <a href="/g2Oficial/contato.php" class="nav-link text-white">Contato</a>
                     </li>
                 </ul>
                 <!-- div alinhada ao lado direito da página -->
                 <div class="align-self-end">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="/g2Oficial/cadastroLogin.html" class="nav-link text-white">Quero me Cadastrar</a>
+                            <a href="/g2Oficial/cadastroLogin.php" class="nav-link text-white">Quero me Cadastrar</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/g2Oficial/cadastroLogin.html" class="nav-link text-white">Entrar</a>
+                            <a href="/g2Oficial/cadastroLogin.php" class="nav-link text-white">Entrar</a>
                         </li>
                     </ul>
                 </div>
@@ -95,7 +95,7 @@
                         &copy; 2022 - LOJA BARATÃO
                     </div>
                     <div class="col-12 col-md-4 text-center">
-                        <a href="/g2Oficial/privacy.html" class="text-decoration-none text-dark">Politica de privacidade</a>
+                        <a href="/g2Oficial/privacy.php" class="text-decoration-none text-dark">Politica de privacidade</a>
                     </div>
                 </div>
             </div>

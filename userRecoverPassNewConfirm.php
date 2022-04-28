@@ -17,8 +17,9 @@
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="css/estilos.css" />
 
-    <title>Lojas Baratão - Login</title>
+    <title>Lojas Baratão - Confirmar novo password</title>
 </head>
+
 
     <body>
         <div class="d-flex flex-column wrapper">
@@ -36,16 +37,16 @@
                                 <a class="nav-link text-white" href="index.php">Página Inicial</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="mainContato.html">Contato</a>
+                                <a class="nav-link text-white" href="mainContato.php">Contato</a>
                             </li>
                         </ul>
                         <div class="align-self-end">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="userCadastro.html" class="nav-link text-white">Quero me cadastrar</a>
+                                    <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="userLogin.html" class="nav-link text-white">Logar</a>
+                                    <a href="userLogin.php" class="nav-link text-white">Logar</a>
                                 </li>
                                 <li class="nav-item">
                                     <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1"
@@ -59,55 +60,30 @@
                     </div>
                 </div>
             </nav>
-    
+
             <main class="flex-fill">
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <form class="col-sm-10 col-md-8 col-lg-6" name="insertlogin" action="userLoginChk.php" method="POST">
-                            <h1>Identifique-se, por favor</h1>
-                            <div class="form-floating mb-3">
-                                <input
-                                    type="email"
-                                    id="txtEmail"
-                                    name="username"
-                                    class="form-control"
-                                    placeholder=" "
-                                    autofocus
-                                >
-                                <label for="txtEmail">E-mail</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input
-                                    type="password"
-                                    id="txtSenha"
-                                    name="passwd"
-                                    class="form-control"
-                                    placeholder=" "
-                                >
-                                <label for="txtSenha">Senha</label>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input
-                                    type="checkbox"
-                                    class="form-check-input"
-                                    value=""
-                                    id="chkLembrar"
-                                >
-                                <label for="chkLembrar" class="form-check-label">Lembrar de mim</label><p>
-                                <input type="submit" class="btn btn-lg btn-success" value="Entrar"></p>
-                            </div>
-                            <p class="mt-3">
-                                Ainda não é cadastrado?
-                                <a href="userCadastro.html">Clique aqui</a>
-                                para se cadastrar.
-                            </p>
-                            <p class="mt-3">
-                                Esqueceu sua senha?
-                                <a href="#">Clique aqui</a>
-                                para recuperá-la.
-                            </p>
-                        </form>
-                    </div>
+                    <h1>Nova Senha Cadastrada!</h1>
+                    <hr>
+                    <p>
+                        Caro cliente,
+                    </p>
+                    <p>
+                        Sua nova senha foi cadastrada com sucesso. Para entrar em sua área restrita agora mesmo,
+                        <a href="userLogin.php">clique aqui</a>
+                        .
+                    </p>
+                    <p>
+                        Agradecemos pela confiança em nossos serviços.
+                    </p>
+                    <p>
+                        Cordialmente,
+                        <br>
+                        Central de Relacionamento Quitanda Online
+                    </p>
+                    <p>
+                        <a href="index.php" class="btn btn-lg btn-primary">Voltar à Página Principal</a>
+                    </p>
                 </div>
             </main>
             <footer class="border-top text-muted bg-light">
@@ -119,18 +95,18 @@
                             CNPJ 00.000.000/0001-00 <br>
                         </div>
                           <div class="col-12 col-md-4 text-center">
-                            <a href="mainPrivacy.html" class="text-decoration-none text-dark">
+                            <a href="mainPrivacy.php" class="text-decoration-none text-dark">
                                 Política de Privacidade
                             </a><br>
-                            <a href="mainTerms.html" class="text-decoration-none text-dark">
+                            <a href="mainTerms.php" class="text-decoration-none text-dark">
                                 Termos de Uso
                             </a><br>
-                            <a href="userAdmin.html" class="text-decoration-none text-dark">
+                            <a href="userAdmin.php" class="text-decoration-none text-dark">
                                 Area Administrativa
                             </a><br>
                         </div>
                         <div class="col-12 col-md-4 text-center">
-                            <a href="mainContato.html" class="text-decoration-none text-dark">
+                            <a href="mainContato.php" class="text-decoration-none text-dark">
                                 Contato Pelo Site
                             </a><br>
                             E-Mail: <a href="mailto:henrique@email.com" class="text-decoration-none text-dark">

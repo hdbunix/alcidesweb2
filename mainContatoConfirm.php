@@ -17,17 +17,19 @@
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="css/estilos.css" />
 
-    <title>Lojas Baratão - Contato</title>
+    <title>Lojas Baratão - Confirmação</title>
 </head>
+
 
 <body>
     <div class="d-flex flex-column wrapper">
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm mb-3">
             <div class="container">
-                <a class="navbar-brand" href="index.php"><strong>Lojas Baratão</strong></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent">
+                <a class="navbar-brand" href="index.php">
+                    <strong>Lojas Baratão</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,20 +38,27 @@
                             <a class="nav-link text-white" href="index.php">Página Inicial</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="mainContato.html">Contato</a>
+                            <a class="nav-link text-white" href="mainContato.php">Contato</a>
                         </li>
                     </ul>
                     <div class="align-self-end">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="userCadastro.html" class="nav-link text-white">Quero me cadastrar</a>
+                                <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                             </li>
+                        <?php session_start(); if (!$_SESSION['LogadoADM']) { ?>
                             <li class="nav-item">
-                                <a href="userLogin.html" class="nav-link text-white">Logar</a>
+                                <a href="userLogin.php" class="nav-link text-white">Logar</a>
                             </li>
+                        <?php } else { ?>
                             <li class="nav-item">
-                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1"
-                                    title="5 produto(s) no carrinho"><small>5</small></span>
+                                <a href="userLogin.php" class="nav-link text-white"><?php echo $_SESSION['Nome']; ?></a>
+                            </li>
+                        <?php } ?>
+                            <li class="nav-item">
+                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="<?php echo $x; ?> produto(s) no carrinho">
+                                    <small><?php echo $x ?></small>
+                                </span>
                                 <a href="mainCart.php" class="nav-link text-white">
                                     <i class="bi-cart" style="font-size: 24px; line-height: 24px;"></i>
                                 </a>
@@ -60,42 +69,26 @@
             </div>
         </nav>
 
+
         <main class="flex-fill">
             <div class="container">
-                <div class="row justify-content-center">
-                    <form class="col-sm-10 col-md-8 col-lg-6">
-                        <h1>Entre em Contato</h1>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" id="txtNomeCompleto" class="form-control" placeholder=" " autofocus>
-                            <label for="txtNomeCompleto">Nome Completo</label>
-                        </div>
-                        
-                        <div class="form-floating mb-3">
-                            <input type="email" id="txtEmail" class="form-control" placeholder=" ">
-                            <label for="txtEmail">E-mail</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <textarea id="txtMensagem" class="form-control" placeholder=" " style="height: 200px;"></textarea>
-                            <label for="txtMensagem">Mensagem</label>
-                        </div>
-
-                        <button type="button" onclick="window.location.href='mainContatoConfirm.html'" class="btn btn-lg btn-primary">Enviar Mensagem</button>
-
-                        <p class="mt-3">
-                            Faremos nosso melhor para responder sua mensagem em até 2 dias úteis.
-                        </p>
-
-                        <p class="mt-3">
-                            Atenciosamente,<br>
-                            Central de Relacionamento Lojas Baratão
-                        </p>
-                    </form>
-                </div>
+                <h1>Mensagem Recebida!</h1>
+                <hr>
+                <p>
+                    Caro cliente,
+                </p>
+                <p>
+                    Informamos que sua mensagem foi recebida com sucesso por nossa central de relacionamento com clientes e que em até <b>2 dias úteis</b> ela será respondida. Para evitarmos problemas de comunicação, evite reenviar esta mesma mensagem dentro do prazo de resposta.
+                </p>
+                <p>
+                    Agradecemos pela confiança em nossos serviços.
+                </p>
+                <p>
+                    Cordialmente,<br>
+                    Central de Relacionamento Lojas Baratão
+                </p>
             </div>
         </main>
-
 
         <footer class="border-top text-muted bg-light">
             <div class="container">
@@ -106,18 +99,18 @@
                         CNPJ 00.000.000/0001-00 <br>
                     </div>
                     <div class="col-12 col-md-4 text-center">
-                            <a href="mainPrivacy.html" class="text-decoration-none text-dark">
+                            <a href="mainPrivacy.php" class="text-decoration-none text-dark">
                                 Política de Privacidade
                             </a><br>
-                            <a href="mainTerms.html" class="text-decoration-none text-dark">
+                            <a href="mainTerms.php" class="text-decoration-none text-dark">
                                 Termos de Uso
                             </a><br>
-                            <a href="userAdmin.html" class="text-decoration-none text-dark">
+                            <a href="userAdmin.php" class="text-decoration-none text-dark">
                                 Area Administrativa
                             </a><br>
                     </div>
                     <div class="col-12 col-md-4 text-center">
-                        <a href="mainContato.html" class="text-decoration-none text-dark">
+                        <a href="mainContato.php" class="text-decoration-none text-dark">
                             Contato Pelo Site
                         </a><br>
                         E-Mail: <a href="mailto:henrique@email.com" class="text-decoration-none text-dark">

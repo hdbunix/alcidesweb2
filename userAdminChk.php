@@ -8,20 +8,18 @@ $adm = $pdo->query('Select Codigo, Nome from usuarios_adm where Login = "'.$us.'
 // ------------------------------
 if (!$adm['Codigo']) {
    echo '<b>Usuário não existe ou senha inválida.</b>';
-   echo '<br><a href="userAdmin.html">Voltar</a>';
+   echo '<br><a href="userAdmin.php">Voltar</a>';
    
 } else {
 
    $_SESSION['Codigo'] = $adm['Codigo'];
    $_SESSION['Nome'] = $adm['Nome'];
-   $_SESSION['Logado'] = true;
+   $_SESSION['LogadoADM'] = true;
    
    // Abre sistema :
    // ------------  
 
    echo '<b>Menu de Opções</b><hr>';   
-   echo '<a href="inclui_produtos.php">Incluir Produto</a>';
-   echo '<br><a href="lista_produtos.php">Listar Produtos</a>'; 
-   echo '<br><br><a href="logout.php">Sair do Sistema</a>';  
+   echo '<a href="userAdminArea.php">Area Administrativa</a>';
      
 }

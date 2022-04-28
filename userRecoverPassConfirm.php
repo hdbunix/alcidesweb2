@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="css/estilos.css" />
 
-    <title>Lojas Baratão - Recuperação</title>
+    <title>Lojas Baratão - Confirmar recuperação de password</title>
 </head>
 
 
@@ -38,16 +38,16 @@
                                     <a class="nav-link text-white" href="index.php">Página Inicial</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="mainContato.html">Contato</a>
+                                    <a class="nav-link text-white" href="mainContato.php">Contato</a>
                                 </li>
                             </ul>
                             <div class="align-self-end">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a href="userCadastro.html" class="nav-link text-white">Quero me cadastrar</a>
+                                        <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="userLogin.html" class="nav-link text-white">Logar</a>
+                                        <a href="userLogin.php" class="nav-link text-white">Logar</a>
                                     </li>
                                     <li class="nav-item">
                                         <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1"
@@ -64,27 +64,27 @@
         
                 <main class="flex-fill">
                     <div class="container">
-                        <div class="row justify-content-center">
-                            <form class="col-sm-10 col-md-8 col-lg-6">
-                                <h1>Recuperação de Senha</h1>
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="email"
-                                        id="txtEmail"
-                                        class="form-control"
-                                        placeholder=" "
-                                        autofocus
-                                    >
-                                    <label for="txtEmail">E-mail</label>
-                                </div>
-                                <button type="button" onclick="window.location.href='userRecoverPassConfirm.html'" class="btn btn-lg btn-primary">Recuperar Senha</button>
-                                <p class="mt-3">
-                                    Ainda não é cadastrado?
-                                    <a href="userNew.html">Clique aqui</a>
-                                    para se cadastrar.
-                                </p>
-                            </form>
-                        </div>
+                        <h1>Instruções Enviadas!</h1>
+                        <hr>
+                        <p>
+                            Caro cliente,
+                        </p>
+                        <p>
+                            As instruções para a realização de cadastro de uma nova senha foram enviadas para o e-mail
+                            <b>email@dominio.com.br</b>
+                            . Abra a mensagem que lhe enviamos e siga as instruções corretamente para cadastrar uma nova senha.
+                        </p>
+                        <p>
+                            Agradecemos pela confiança em nossos serviços.
+                        </p>
+                        <p>
+                            Cordialmente,
+                            <br>
+                            Central de Relacionamento Lojas Baratão
+                        </p>
+                        <p>
+                            <a href="index.php" class="btn btn-lg btn-primary">Voltar à Página Principal</a>
+                        </p>
                     </div>
                 </main>
                 <footer class="border-top text-muted bg-light">
@@ -96,15 +96,15 @@
                                 CNPJ 00.000.000/0001-00 <br>
                             </div>
                             <div class="col-12 col-md-4 text-center">
-                                <a href="mainPrivacy.html" class="text-decoration-none text-dark">
+                                <a href="mainPrivacy.php" class="text-decoration-none text-dark">
                                     Política de Privacidade
                                 </a><br>
-                                <a href="mainTerms.html" class="text-decoration-none text-dark">
+                                <a href="mainTerms.php" class="text-decoration-none text-dark">
                                     Termos de Uso
                                 </a><br>
                             </div>
                             <div class="col-12 col-md-4 text-center">
-                                <a href="mainContato.html" class="text-decoration-none text-dark">
+                                <a href="mainContato.php" class="text-decoration-none text-dark">
                                     Contato Pelo Site
                                 </a><br>
                                 E-Mail: <a href="mailto:henrique@email.com" class="text-decoration-none text-dark">

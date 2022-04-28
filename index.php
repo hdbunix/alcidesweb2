@@ -72,22 +72,28 @@ switch ($cotip) {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="index.html">Página Inicial</a>
+                            <a class="nav-link text-white" href="index.php">Página Inicial</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="mainContato.html">Contato</a>
+                            <a class="nav-link text-white" href="mainContato.php">Contato</a>
                         </li>
                     </ul>
                     <div class="align-self-end">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="userCadastro.html" class="nav-link text-white">Quero me cadastrar</a>
+                                <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                             </li>
+                        <?php session_start(); if (!$_SESSION['LogadoADM']) { ?>
                             <li class="nav-item">
-                                <a href="userLogin.html" class="nav-link text-white">Logar</a>
+                                <a href="userLogin.php" class="nav-link text-white">Logar</a>
                             </li>
+                        <?php } else { ?>
                             <li class="nav-item">
-                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="5 produto(s) no carrinho">
+                                <a href="userLogin.php" class="nav-link text-white"><?php echo $_SESSION['Nome']; ?></a>
+                            </li>
+                        <?php } ?>
+                            <li class="nav-item">
+                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="<?php echo $x; ?> produto(s) no carrinho">
                                     <small><?php echo $x ?></small>
                                 </span>
                                 <a href="mainCart.php" class="nav-link text-white">
@@ -234,21 +240,21 @@ switch ($cotip) {
                         <br>
                     </div>
                     <div class="col-12 col-md-4 text-center">
-                        <a href="mainPrivacy.html" class="text-decoration-none text-dark">
+                        <a href="mainPrivacy.php" class="text-decoration-none text-dark">
                             Política de Privacidade
                         </a>
                         <br>
-                        <a href="mainTerms.html" class="text-decoration-none text-dark">
+                        <a href="mainTerms.php" class="text-decoration-none text-dark">
                             Termos de Uso
                         </a>
                         <br>
-                        <a href="userAdmin.html" class="text-decoration-none text-dark">
+                        <a href="userAdmin.php" class="text-decoration-none text-dark">
                             Area Administrativa
                         </a>
                         <br>
                     </div>
                     <div class="col-12 col-md-4 text-center">
-                        <a href="mainContato.html" class="text-decoration-none text-dark">
+                        <a href="mainContato.php" class="text-decoration-none text-dark">
                             Contato Pelo Site
                         </a>
                         <br>
