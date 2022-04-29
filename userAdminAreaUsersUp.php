@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="css/estilos.css" />
-
     <title>Lojas Baratão - Base</title>
 </head>
 
@@ -65,10 +64,7 @@
                     </div>
                 </div>
             </div>
-        </nav>
-        
-            
-        <?php
+        </nav>      <?php
 session_start();
 if (!$_SESSION['LogadoADM']) {
    echo '<main class="flex-fill">
@@ -78,31 +74,31 @@ if (!$_SESSION['LogadoADM']) {
      <p><a href="userLogin.php" class="btn btn-lg btn-success">Logar</a></p>
      </div></div></main>';
 exit;}?>
+
         <main class="flex-fill">
             <div class="container">
-    <a class="btn btn-primary" href="userAdminAreaProd.php">Limpar</a>
-    <a class="btn btn-primary" href="userAdminAreaProd.php?filter='Celulares'">Celulares</a>
-    <a class="btn btn-primary" href="userAdminAreaProd.php?filter='Televisores'">TVs</a>
-    <a class="btn btn-primary" href="userAdminAreaProd.php?filter='Notebooks'">Notebooks</a>
-            <?php
-include "connect.php";
-$vardt="Notebooks";
-$lista_prod = $pdo->query('SELECT CodigoEAN, Produto, Descricao, DescTipo, Preco, Estoque FROM produtos INNER JOIN tipos_prod ON produtos.CodTipo=tipos_prod.CodTipo WHERE DescTipo="'.$vardt.'"');
-echo '<table class="table table-hover table-striped" border=1>';
-?> <tr><th>Codigo </th><th>Produto </th><th>Descrição </th><th>Tipo </th><th>Preço </th><th>Estoque </th><th></th><th></th><th></th></tr> <?php
-foreach ($lista_prod as $row) {
-    
-    echo '<tr>';
-    echo '<td>' . $row['CodigoEAN'] . '</td><td>' . $row['Produto'] . '</td><td>' . $row['Descricao'] . '</td><td>' . $row['DescTipo'] . '</td><td>' . $row['Preco'] . '</td><td>' . $row['Estoque'] . '</td><td><a href="userAdminAreaProdDel.php?cod=' . $row['CodigoEAN'] . '">Excluir</a></td>';
-    echo '<td><a href="userAdminAreaProdUp.php?cod=' . $row['CodigoEAN'] . '">Atualizar</a></td>';
-    echo '<td><a href="userAdminAreaProdPhotoNew.php?cod='.$row['CodigoEAN'].'">Adicionar foto</a></td>';    echo '</tr>';
-}
-echo '</table>';
-?>
-<br>
-<a class="btn btn-lg btn-success" href="userAdminAreaProdNew.php">Gravar Novo</a>
-<a class="btn btn-lg btn-primary" href="userAdminArea.php">Voltar</a>
+                <?php
+                include "connect.php";
+                $data = $_GET;
+                $alt_useradm = $pdo->query('SELECT Codigo, Nome, Login, Senha FROM usuarios WHERE Codigo=' . $data['cod'])->fetch();
 
+                $coduseradm = $alt_useradm['Codigo'];
+                $nomuseradm = $alt_useradm['Nome'];
+                $lgnuseradm = $alt_useradm['Login'];
+                $pwduseradm = $alt_useradm['Senha'];
+
+                ?>
+                <h2>Alteração de usuários Adm</h2>
+                <hr>
+                <form name="Geral" action="userAdminAreaUsersUpChg.php" method="POST">
+                    <p>Código: <input type="text" name="coduseradm" value="<?php echo $coduseradm; ?>" readonly></p>
+                    <p>Nome: <input type="text" name="nomeuseradm" value="<?php echo $nomuseradm; ?>" required></p>
+                    <p>Usuário: <input type="text" name="useradm" value="<?php echo $lgnuseradm; ?>" required></p>
+                    <p>Senha: <input type="text" name="senhauseradm" value="<?php echo $pwduseradm; ?>" required></p>
+                    <input type="submit" name="" id="gravar" class="btn btn-lg btn-success" value="Gravar">
+                    <button type="button" onclick="window.location.href='userAdminAreaUsers.php'" class="btn btn-lg btn-primary">Voltar</button>
+
+                </form>
             </div>
         </main>
 
