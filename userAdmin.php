@@ -104,7 +104,7 @@
                             <input type="submit" value="Entrar" class="btn btn-lg btn-primary">
                             <p class="mt-3">
                                 Ainda não é cadastrado?
-                                <a href="userAdminAreaAdmNew.php">Clique aqui</a>
+                                <a href="userCadastro.php">Clique aqui</a>
                                 para se cadastrar.
                             </p>
                             <p class="mt-3">
