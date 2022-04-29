@@ -40,44 +40,52 @@
 </head>
 <!-- Definição de tamanho min para body e imagem de fundo -->
 
-<body style="min-width: 372px;" background="/g2Oficial/img/background.jpg">
-
-
-    <!-- parametros para o menu de navegação superior -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger border-bottom shadow-sm mb-3">
-        <!-- div para conteúdo responsivo -->
-        <div class="container">
-            <a class="navbar-brand" href="/g2Oficial/index.php">
-                <strong>LOJA BARATÃO</strong>
-            </a>
-            <!-- Botão para menu com conteúdo responsivo (ocultar menu) -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <!-- icone para o menu responsivo oculto -->
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- div associada ao botão de menu responsivo oculto (note a classe navbar-collapse chamada no data-target acima) -->
-            <div class="navbar-collapse collapse">
-                <!-- o menu construído -->
-                <ul class="navbar-nav flex-grow-1">
-
-                    <li class="nav-item">
-                        <a href="/g2Oficial/contato.php" class="nav-link text-white">Contato</a>
-                    </li>
-                </ul>
-                <!-- div alinhada ao lado direito da página -->
-                <div class="align-self-end">
-                    <ul class="navbar-nav">
+<body>
+    <div class="d-flex flex-column wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="index.php">
+                    <strong>Lojas Baratão</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a href="/g2Oficial/cadastroLogin.php" class="nav-link text-white">Quero me Cadastrar</a>
+                            <a class="nav-link text-white" href="index.php">Página Inicial</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/g2Oficial/cadastroLogin.php" class="nav-link text-white">Entrar</a>
+                            <a class="nav-link text-white" href="mainContato.php">Contato</a>
                         </li>
                     </ul>
+                    <div class="align-self-end">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
+                            </li>
+                        <?php session_start(); if (!$_SESSION['LogadoADM']) { ?>
+                            <li class="nav-item">
+                                <a href="userLogin.php" class="nav-link text-white">Logar</a>
+                            </li>
+                        <?php } else { ?>
+                            <li class="nav-item">
+                                <a href="userLogin.php" class="nav-link text-white"><?php echo $_SESSION['Nome']; ?></a>
+                            </li>
+                        <?php } ?>
+                            <li class="nav-item">
+                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="<?php echo $x; ?> produto(s) no carrinho">
+                                    <small><?php echo $x ?></small>
+                                </span>
+                                <a href="mainCart.php" class="nav-link text-white">
+                                    <i class="bi-cart" style="font-size: 24px; line-height: 24px;"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     <?php
         session_start();
         session_destroy();

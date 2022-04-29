@@ -47,7 +47,7 @@
                             <li class="nav-item">
                                 <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                             </li>
-                        <?php session_start(); if (!$_SESSION['Logado']) { ?>
+                        <?php session_start(); if (!$_SESSION['LogadoADM']) { ?>
                             <li class="nav-item">
                                 <a href="userLogin.php" class="nav-link text-white">Logar</a>
                             </li>
@@ -68,9 +68,10 @@
                     </div>
                 </div>
             </div>
-        </nav>      <?php
+        </nav>     
+         <?php
 session_start();
-if (!$_SESSION['Logado']) {
+if (!$_SESSION['LogadoADM']) {
    echo '<main class="flex-fill">
          <div class="container">
             <div class="row g-3">

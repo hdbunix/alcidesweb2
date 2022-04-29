@@ -58,7 +58,7 @@
         
         </nav>      <?php
 session_start();
-if (!$_SESSION['Logado']) {
+if (!$_SESSION['LogadoADM']) {
    echo '<main class="flex-fill">
          <div class="container">
             <div class="row g-3">

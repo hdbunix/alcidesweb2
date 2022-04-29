@@ -23,7 +23,6 @@
 
 <body>
     <div class="d-flex flex-column wrapper">
-
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm mb-3">
             <div class="container">
                 <a class="navbar-brand" href="index.php">
@@ -46,7 +45,7 @@
                             <li class="nav-item">
                                 <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                             </li>
-                        <?php session_start(); if (!$_SESSION['Logado']) { ?>
+                        <?php session_start(); if (!$_SESSION['LogadoADM']) { ?>
                             <li class="nav-item">
                                 <a href="userLogin.php" class="nav-link text-white">Logar</a>
                             </li>
@@ -68,7 +67,6 @@
                 </div>
             </div>
         </nav>
-
 
         <main class="flex-fill">
             <div class="container">

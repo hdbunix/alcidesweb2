@@ -16,48 +16,10 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/estilos.css">
-    <style>
-            p.corta-3linha {
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow:hidden;
-                text-overflow: ellipsis;
-            }
-            h5.corta-4linha {
-                display: -webkit-box;
-                -webkit-line-clamp: 4;
-                -webkit-box-orient: vertical;
-                overflow:hidden;
-                text-overflow: ellipsis;
-            }
-        </style>
+
     <title>Lojas Baratão - Página Principal</title>
 </head>
-<?php
-$cotip=$_GET['CodTipo'];
-include "connect.php";
-session_start();
 
-
-switch ($cotip) {
-    case '1':
-        $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 1 ');
-        break;
-    
-    case '2':
-        $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 2 ');
-        break;
-
-    case '3':
-        $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 3 ');
-        break;
-                
-    default:
-    $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos');
-    break;
-}
-?>
 
 <body>
     <div class="d-flex flex-column wrapper">
@@ -83,7 +45,7 @@ switch ($cotip) {
                             <li class="nav-item">
                                 <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                             </li>
-                        <?php session_start(); if (!$_SESSION['Logado']) { ?>
+                        <?php session_start(); if (!$_SESSION['LogadoADM']) { ?>
                             <li class="nav-item">
                                 <a href="userLogin.php" class="nav-link text-white">Logar</a>
                             </li>
@@ -104,9 +66,7 @@ switch ($cotip) {
                     </div>
                 </div>
             </div>
-        </nav>
-
-
+        </nav>    
 <?php
 session_start();
 session_destroy();
