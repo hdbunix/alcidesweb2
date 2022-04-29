@@ -71,7 +71,7 @@ exit;}?>
                 <?php
                 include "connect.php";
                 $data = $_POST;
-                $qry = 'INSERT INTO `produtos` (`CodigoEAN`, `Produto`, `Descricao`, `CodTipo`, `Preco`, `Estoque`) VALUES ("' . $data['codean'] . '", "' . $data['nomeprod'] . '", "' . $data['descprod'] . '", "' . $data['codtipoprod'] . '", "' . $data['precoprod'] . '", "' . $data['estoqueprod'] . '");';
+                $qry = 'INSERT INTO `produtos` (`CodigoEAN`, `Produto`, `Descricao`, `CodTipo`, `Preco`, `Estoque`) VALUES (' . $data['codean'] . ', "' . $data['nomeprod'] . '", "' . $data['descprod'] . '", ' . $data['codtipoprod'] . ', ' . $data['precoprod'] . ', ' . $data['estoqueprod'] . ');';
                 $pdo->exec($qry);
 
                 echo '<a class="btn btn-lg btn-warning" href="userAdminAreaProdPhotoNew.php?cod='.$data['codean'].'">Adicionar foto</a>';

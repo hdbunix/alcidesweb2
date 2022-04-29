@@ -24,7 +24,9 @@
     <div class="d-flex flex-column wrapper">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm mb-3">
             <div class="container">
-                <a class="navbar-brand" href="index.php"><strong>Lojas Baratão</strong></a>
+                <a class="navbar-brand" href="index.php">
+                    <strong>Lojas Baratão</strong>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -42,11 +44,19 @@
                             <li class="nav-item">
                                 <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                             </li>
+                        <?php session_start(); if (!$_SESSION['LogadoADM']) { ?>
                             <li class="nav-item">
                                 <a href="userLogin.php" class="nav-link text-white">Logar</a>
                             </li>
+                        <?php } else { ?>
                             <li class="nav-item">
-                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="5 produto(s) no carrinho"><small>5</small></span>
+                                <a href="userLogin.php" class="nav-link text-white"><?php echo $_SESSION['Nome']; ?></a>
+                            </li>
+                        <?php } ?>
+                            <li class="nav-item">
+                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="<?php echo $x; ?> produto(s) no carrinho">
+                                    <small><?php echo $x ?></small>
+                                </span>
                                 <a href="mainCart.php" class="nav-link text-white">
                                     <i class="bi-cart" style="font-size: 24px; line-height: 24px;"></i>
                                 </a>
@@ -55,36 +65,36 @@
                     </div>
                 </div>
             </div>
-        
-        </nav>      <?php
-session_start();
-if (!$_SESSION['LogadoADM']) {
-   echo '<main class="flex-fill">
+        </nav> <?php
+                session_start();
+                if (!$_SESSION['LogadoADM']) {
+                    echo '<main class="flex-fill">
          <div class="container">
             <div class="row g-3">
      <p>Acesso negado</p>
      <p><a href="userLogin.php" class="btn btn-lg btn-success">Logar</a></p>
      </div></div></main>';
-exit;}?>
+                    exit;
+                } ?>
 
         <main class="flex-fill">
             <div class="container">
 
                 <form name="Geral" action="userAdminAreaProdNewChk.php" method="POST">
-                <p>Codigo: <input type="text" name="codean" required></p>
-                <p>Produto: <input type="text" name="nomeprod" required></p>
+                    <p>Codigo: <input type="text" name="codean" required></p>
+                    <p>Produto: <input type="text" name="nomeprod" required></p>
                     <p>Descrição: <input type="text" name="descprod" required></p>
-<p>Tipo:
-<?php
-include "connect.php";
-$lista_prod = $pdo->query('SELECT CodTipo, DescTipo from tipos_prod order by DescTipo');
-echo '<select name="codtipoprod" >';
-foreach ($lista_prod as $row) {
-    echo '<option value="' . $row['CodTipo'] . '">' . $row['DescTipo'] . '</option>';
-}
-echo '</select>';
-?>
-</p>
+                    <p>Tipo:
+                        <?php
+                        include "connect.php";
+                        $lista_prod = $pdo->query('SELECT CodTipo, DescTipo from tipos_prod order by DescTipo');
+                        echo '<select name="codtipoprod" >';
+                        foreach ($lista_prod as $row) {
+                            echo '<option value="' . $row['CodTipo'] . '">' . $row['DescTipo'] . '</option>';
+                        }
+                        echo '</select>';
+                        ?>
+                    </p>
                     <p>Preço: <input type="text" name="precoprod" required></p>
                     <p>Estoque: <input type="text" name="estoqueprod" required></p>
 

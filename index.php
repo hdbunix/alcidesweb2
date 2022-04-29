@@ -42,19 +42,19 @@ session_start();
 
 switch ($cotip) {
     case '1':
-        $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 1 ');
+        $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 1 AND Estoque > 0');
         break;
     
     case '2':
-        $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 2 ');
+        $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 2 AND Estoque > 0');
         break;
 
     case '3':
-        $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 3 ');
+        $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 3 AND Estoque > 0');
         break;
                 
     default:
-    $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos');
+    $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE Estoque > 0');
     break;
 }
 ?>
@@ -215,7 +215,7 @@ switch ($cotip) {
                                         </a>
                                 </form>
                                 <small class="text-success">
-                                    "'.$row['Estoque'].'"
+                                    Disponiveis: '.$row['Estoque'].'
                                 </small>
                             </div>
                         </div>

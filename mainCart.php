@@ -69,11 +69,11 @@
 
       <?php
 session_start();
-if (!$_SESSION['Logado']) {
+if (!$_SESSION['LogadoADM']) {
    echo '<main class="flex-fill">
          <div class="container">
             <div class="row g-3">
-     <p>Acesso negado</p>
+     <h5>Voce deve estar logado para adicionar itens ao seu carrinho!!!</h5>
      <p><a href="userLogin.php" class="btn btn-lg btn-success">Logar</a></p>
      </div></div></main>';
 exit;}?>
