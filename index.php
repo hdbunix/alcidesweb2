@@ -17,25 +17,26 @@
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/estilos.css">
     <style>
-            p.corta-3linha {
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow:hidden;
-                text-overflow: ellipsis;
-            }
-            h5.corta-4linha {
-                display: -webkit-box;
-                -webkit-line-clamp: 4;
-                -webkit-box-orient: vertical;
-                overflow:hidden;
-                text-overflow: ellipsis;
-            }
-        </style>
+        p.corta-3linha {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        h5.corta-4linha {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
     <title>Lojas Baratão - Página Principal</title>
 </head>
 <?php
-$cotip=$_GET['CodTipo'];
+$cotip = $_GET['CodTipo'];
 include "connect.php";
 session_start();
 
@@ -44,7 +45,7 @@ switch ($cotip) {
     case '1':
         $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 1 AND Estoque > 0');
         break;
-    
+
     case '2':
         $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 2 AND Estoque > 0');
         break;
@@ -52,10 +53,10 @@ switch ($cotip) {
     case '3':
         $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE CodTipo = 3 AND Estoque > 0');
         break;
-                
+
     default:
-    $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE Estoque > 0');
-    break;
+        $produto = $pdo->query('SELECT CodigoEAN, Produto, Descricao, CodTipo, Preco, Estoque FROM produtos WHERE Estoque > 0');
+        break;
 }
 ?>
 
@@ -83,18 +84,19 @@ switch ($cotip) {
                             <li class="nav-item">
                                 <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                             </li>
-                        <?php session_start(); if (!$_SESSION['LogadoADM']) { ?>
-                            <li class="nav-item">
-                                <a href="userLogin.php" class="nav-link text-white">Logar</a>
-                            </li>
-                        <?php } else { ?>
-                            <li class="nav-item">
-                                <a href="userLogin.php" class="nav-link text-white"><?php echo $_SESSION['Nome']; ?></a>
-                            </li>
-                        <?php } ?>
+                            <?php session_start();
+                            if (!$_SESSION['LogadoADM']) { ?>
+                                <li class="nav-item">
+                                    <a href="userLogin.php" class="nav-link text-white">Logar</a>
+                                </li>
+                            <?php } else { ?>
+                                <li class="nav-item">
+                                    <a href="userLogin.php" class="nav-link text-white"><?php echo $_SESSION['Nome']; ?></a>
+                                </li>
+                            <?php } ?>
                             <li class="nav-item">
                                 <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="Produtos no carrinho">
-                                    <small><?php echo $_SESSION["nro_item"]+0; ?></small>
+                                    <small><?php echo $_SESSION["nro_item"] + 0; ?></small>
                                 </span>
                                 <a href="mainCart.php" class="nav-link text-white">
                                     <i class="bi-cart" style="font-size: 24px; line-height: 24px;"></i>
@@ -131,56 +133,12 @@ switch ($cotip) {
         </header>
         <main class="flex-fill">
             <div class="container">
-                <!-- grid com os itens principais da página -->
                 <div class="row g-3">
-                    <div class="col-xl-2 col-lg-3 d-flex align-items-stretch" style="margin-left: auto; margin-right: auto;">
-                        <!-- primeiro item do grid -->
-                        <div class="card text-center bg-light">
-                            <div class="card-body">
-                                <h5>
-                                    Celulares
-                                </h5>
-                            </div>
-                            <div class="card-footer">
-                                <form class="d-block">
-                                    <a class="btn btn-primary" href="index.php?CodTipo=3">
-                                        <h5 style="color: black;">Acessar</h5>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-3 d-flex align-items-stretch" style="margin-left: auto; margin-right: auto;">
-                        <div class="card text-center bg-light">
-                            <div class="card-body">
-                                <h5>
-                                    Notebooks
-                                </h5>
-                            </div>
-                            <div class="card-footer">
-                                <form class="d-block">
-                                    <a class="btn btn-primary" href="index.php?CodTipo=1">
-                                        <h5 style="color: black;">Acessar</h5>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-3 d-flex align-items-stretch" style="margin-left: auto; margin-right: auto;">
-                        <div class="card text-center bg-light">
-                            <div class="card-body">
-                                <h5>
-                                    Televisores
-                                </h5>
-                            </div>
-                            <div class="card-footer">
-                                <form class="d-block">
-                                    <a class="btn btn-primary" href="index.php?CodTipo=2">
-                                        <h5 style="color: black;">Acessar</h5>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-lg col-3 btn-dark" href="index.php">Filtros</a>
+                        <a class="btn btn-lg col-3 btn-dark" href="index.php?CodTipo=3">Celulares</a>
+                        <a class="btn btn-lg col-3 btn-dark" href="index.php?CodTipo=1">Notebooks</a>
+                        <a class="btn btn-lg col-3 btn-dark" href="index.php?CodTipo=2">Televisores</a>
                     </div>
                 </div>
                 <hr class="mt-3">
@@ -192,30 +150,30 @@ switch ($cotip) {
                         <div class="col-xl-2 col-lg-3 d-flex align-items-stretch">
                             <!-- primeiro item do grid -->
                             <div class="card text-center bg-light">
-                            <a href="mainCart.php?CodEAN=' . $row['CodigoEAN'].'&Produto='.$row['Produto'].'&Preco='.$row['Preco'].'">
-                                <img src="img/prod/'.$row['CodigoEAN'].'.jpg" class="card-img-top">
+                            <a href="mainCart.php?CodEAN=' . $row['CodigoEAN'] . '&Produto=' . $row['Produto'] . '&Preco=' . $row['Preco'] . '">
+                                <img src="img/prod/' . $row['CodigoEAN'] . '.jpg" class="card-img-top">
                             </a>
                             <div class="card-header">
-                                R$'.$row['Preco'].'
+                                R$' . $row['Preco'] . '
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title corta-4linha">
-                                <a href="mainCart.php?CodEAN=' . $row['CodigoEAN'].'&Produto='.$row['Produto'].'&Preco='.$row['Preco'].'">
-                                '.$row['Produto'].'
+                                <a href="mainCart.php?CodEAN=' . $row['CodigoEAN'] . '&Produto=' . $row['Produto'] . '&Preco=' . $row['Preco'] . '">
+                                ' . $row['Produto'] . '
                                     </a>
                                 </h5>
                                 <p class="card-text corta-3linha">
-                                    '.$row['Descricao'].'
+                                    ' . $row['Descricao'] . '
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <form class="d-block">
-                                    <a class="btn btn-success" href="mainCart.php?CodEAN=' . $row['CodigoEAN'].'&Produto='.$row['Produto'].'&Preco='.$row['Preco'].'">
+                                    <a class="btn btn-primary" href="mainCart.php?CodEAN=' . $row['CodigoEAN'] . '&Produto=' . $row['Produto'] . '&Preco=' . $row['Preco'] . '">
                                     <h5 style="color: black;">Adicionar ao Carrinho</h5>
                                         </a>
                                 </form>
                                 <small class="text-success">
-                                    Disponiveis: '.$row['Estoque'].'
+                                    Disponiveis: ' . $row['Estoque'] . '
                                 </small>
                             </div>
                         </div>

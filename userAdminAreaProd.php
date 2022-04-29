@@ -20,6 +20,31 @@
     <title>Lojas Baratão - Base</title>
 </head>
 
+<?php
+include "connect.php";
+session_start();
+switch ($_GET['filter']) {
+    case 'Celulares':
+        $lista_prod = $pdo->query('SELECT CodigoEAN, Produto, Descricao, DescTipo, Preco, Estoque FROM produtos INNER JOIN tipos_prod ON produtos.CodTipo=tipos_prod.CodTipo WHERE DescTipo="Celulares"');
+        break;
+    
+    case 'Notebooks':
+        $lista_prod = $pdo->query('SELECT CodigoEAN, Produto, Descricao, DescTipo, Preco, Estoque FROM produtos INNER JOIN tipos_prod ON produtos.CodTipo=tipos_prod.CodTipo WHERE DescTipo="Notebooks"');
+        break;
+
+    case 'Televisores':
+        $lista_prod = $pdo->query('SELECT CodigoEAN, Produto, Descricao, DescTipo, Preco, Estoque FROM produtos INNER JOIN tipos_prod ON produtos.CodTipo=tipos_prod.CodTipo WHERE DescTipo="Televisores"');
+        break;
+                
+    default:
+    $lista_prod = $pdo->query('SELECT CodigoEAN, Produto, Descricao, DescTipo, Preco, Estoque FROM produtos INNER JOIN tipos_prod ON produtos.CodTipo=tipos_prod.CodTipo');
+    break;
+}
+
+
+?>
+
+
 <body>
     <div class="d-flex flex-column wrapper">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm mb-3">
@@ -80,9 +105,14 @@ if (!$_SESSION['LogadoADM']) {
 exit;}?>
         <main class="flex-fill">
             <div class="container">
+
+                <div class="d-flex justify-content-center">
+                <a class="btn btn-lg col-3 btn-dark" href="userAdminAreaProd.php">Filtros</a>
+                <a class="btn btn-lg col-3 btn-dark" href="userAdminAreaProd.php?filter=Celulares">Celulares</a>
+                <a class="btn btn-lg col-3 btn-dark" href="userAdminAreaProd.php?filter=Notebooks">Notebooks</a>
+                <a class="btn btn-lg col-3 btn-dark" href="userAdminAreaProd.php?filter=Televisores">Televisores</a>
+                </div>
             <?php
-include "connect.php";
-$lista_prod = $pdo->query('SELECT CodigoEAN, Produto, Descricao, DescTipo, Preco, Estoque FROM produtos INNER JOIN tipos_prod ON produtos.CodTipo=tipos_prod.CodTipo');
 echo '<table class="table table-hover table-striped" border=1>';
 ?> <tr><th>Codigo </th><th>Produto </th><th>Descrição </th><th>Tipo </th><th>Preço </th><th>Estoque </th><th></th><th></th><th></th></tr> <?php
 foreach ($lista_prod as $row) {
