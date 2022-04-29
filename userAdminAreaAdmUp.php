@@ -43,7 +43,7 @@
                             <li class="nav-item">
                                 <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                             </li>
-                        <?php session_start(); if (!$_SESSION['LogadoADM']) { ?>
+                        <?php session_start(); if (!$_SESSION['Logado']) { ?>
                             <li class="nav-item">
                                 <a href="userLogin.php" class="nav-link text-white">Logar</a>
                             </li>
@@ -64,13 +64,16 @@
                     </div>
                 </div>
             </div>
-        </nav>
-<?php
+        </nav>      <?php
 session_start();
-if (!$_SESSION['LogadoADM']) {
-    echo 'Acesso negado';
+if (!$_SESSION['Logado']) {
+   echo '<main class="flex-fill">
+         <div class="container">
+            <div class="row g-3">
+     <p>Acesso negado</p>
+     <p><a href="userLogin.php" class="btn btn-lg btn-success">Logar</a></p>
+     </div></div></main>';
 exit;}?>
-
 
         <main class="flex-fill">
             <div class="container">

@@ -79,13 +79,15 @@ exit;}?>
         <main class="flex-fill">
             <div class="container">
             <?php
-            include "connect.php";
-            $data = $_POST;
-            $qry = 'UPDATE usuarios_adm SET Nome ="'. $data['nomeuseradm'] .'", Login ="'. $data['useradm'] .'", Senha = md5("'. $data['senhauseradm'] . '") WHERE Codigo ='. $data['coduseradm'];
-            $pdo->exec($qry);
-            echo 'User alterado';
-            ?><br>
-            <button type="button" onclick="window.location.href='userAdminAreaAdm.php'" class="btn btn-lg btn-primary">Voltar</button>
+
+include "connect.php";
+$data = $_GET;
+$qry = ('DELETE FROM usuarios WHERE Codigo=' . $data['cod']);
+$pdo->exec($qry);
+echo 'Registro Excluído';
+
+?><br>
+<a class="btn btn-primary" href="userAdminAreaUsers.php">Voltar</a>
             </div>
         </main>
 

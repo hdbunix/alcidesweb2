@@ -24,9 +24,10 @@
     <div class="d-flex flex-column wrapper">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm mb-3">
             <div class="container">
-                <a class="navbar-brand" href="index.php"><strong>Lojas Baratão</strong></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent">
+                <a class="navbar-brand" href="index.php">
+                    <strong>Lojas Baratão</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -43,12 +44,19 @@
                             <li class="nav-item">
                                 <a href="userCadastro.php" class="nav-link text-white">Quero me cadastrar</a>
                             </li>
+                        <?php session_start(); if (!$_SESSION['Logado']) { ?>
                             <li class="nav-item">
                                 <a href="userLogin.php" class="nav-link text-white">Logar</a>
                             </li>
+                        <?php } else { ?>
                             <li class="nav-item">
-                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1"
-                                    title="5 produto(s) no carrinho"><small>5</small></span>
+                                <a href="userLogin.php" class="nav-link text-white"><?php echo $_SESSION['Nome']; ?></a>
+                            </li>
+                        <?php } ?>
+                            <li class="nav-item">
+                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="<?php echo $x; ?> produto(s) no carrinho">
+                                    <small><?php echo $x ?></small>
+                                </span>
                                 <a href="mainCart.php" class="nav-link text-white">
                                     <i class="bi-cart" style="font-size: 24px; line-height: 24px;"></i>
                                 </a>
@@ -57,18 +65,34 @@
                     </div>
                 </div>
             </div>
-        
-        </nav>
-<?php
+        </nav>      <?php
 session_start();
-if (!$_SESSION['LogadoADM']) {
-    echo 'Acesso negado';
+if (!$_SESSION['Logado']) {
+   echo '<main class="flex-fill">
+         <div class="container">
+            <div class="row g-3">
+     <p>Acesso negado</p>
+     <p><a href="userLogin.php" class="btn btn-lg btn-success">Logar</a></p>
+     </div></div></main>';
 exit;}?>
-
-
         <main class="flex-fill">
             <div class="container">
-
+                <?php
+                include "connect.php";
+                $lista_adm = $pdo->query('SELECT Codigo, Nome, Login from usuarios');
+                echo '<table class="table table-hover table-striped" border=1>';
+                ?> <tr><th>Codigo </th><th>Nome </th><th>Login </th><th></th><th></th></tr> <?php
+                    foreach ($lista_adm as $row) {
+                    echo '<tr>';
+                    echo '<td>' . $row['Codigo'] . '</td><td>' . $row['Nome'] . '</td><td>' . $row['Login'] . '</td><td><a href="userAdminAreaUsersDel.php?cod=' . $row['Codigo'] . '">Excluir</a></td>';
+                    echo '<td><a href="userAdminAreaUsersUp.php?cod=' . $row['Codigo'] . '">Atualizar</a></td>';
+                    echo '</tr>';
+                }
+                echo '</table>'
+                ?>
+                <br>
+                <a class="btn btn-lg btn-success" href="userAdminAreaUsersNew.php">Gravar Novo</a>
+                <a class="btn btn-lg btn-primary" href="userAdminArea.php">Voltar</a>
             </div>
         </main>
 
@@ -81,15 +105,15 @@ exit;}?>
                         CNPJ 00.000.000/0001-00 <br>
                     </div>
                     <div class="col-12 col-md-4 text-center">
-                            <a href="mainPrivacy.php" class="text-decoration-none text-dark">
-                                Política de Privacidade
-                            </a><br>
-                            <a href="mainTerms.php" class="text-decoration-none text-dark">
-                                Termos de Uso
-                            </a><br>
-                            <a href="userAdmin.php" class="text-decoration-none text-dark">
-                                Area Administrativa
-                            </a><br>
+                        <a href="mainPrivacy.php" class="text-decoration-none text-dark">
+                            Política de Privacidade
+                        </a><br>
+                        <a href="mainTerms.php" class="text-decoration-none text-dark">
+                            Termos de Uso
+                        </a><br>
+                        <a href="userAdmin.php" class="text-decoration-none text-dark">
+                            Area Administrativa
+                        </a><br>
                     </div>
                     <div class="col-12 col-md-4 text-center">
                         <a href="mainContato.php" class="text-decoration-none text-dark">

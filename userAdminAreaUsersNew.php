@@ -78,14 +78,16 @@ exit;}?>
 
         <main class="flex-fill">
             <div class="container">
-            <?php
-            include "connect.php";
-            $data = $_POST;
-            $qry = 'UPDATE usuarios_adm SET Nome ="'. $data['nomeuseradm'] .'", Login ="'. $data['useradm'] .'", Senha = md5("'. $data['senhauseradm'] . '") WHERE Codigo ='. $data['coduseradm'];
-            $pdo->exec($qry);
-            echo 'User alterado';
-            ?><br>
-            <button type="button" onclick="window.location.href='userAdminAreaAdm.php'" class="btn btn-lg btn-primary">Voltar</button>
+                <form name="Geral" action="userAdminAreaUsersNewChk.php" method="POST">
+                    <p>Nome: <input type="text" name="nome" required></p>
+                    <p>E-Mail: <input type="email" name="user" required></p>
+                    <p>Senha: <input type="text" name="passwd" required></p>
+
+                    <input class="btn btn-lg btn-success" type="submit" value="Gravar">
+                    <a class="btn btn-lg btn-primary" href="userAdminAreaUsers.php">Voltar</a>
+
+                </form>
+
             </div>
         </main>
 
@@ -98,15 +100,15 @@ exit;}?>
                         CNPJ 00.000.000/0001-00 <br>
                     </div>
                     <div class="col-12 col-md-4 text-center">
-                            <a href="mainPrivacy.php" class="text-decoration-none text-dark">
-                                Política de Privacidade
-                            </a><br>
-                            <a href="mainTerms.php" class="text-decoration-none text-dark">
-                                Termos de Uso
-                            </a><br>
-                            <a href="userAdmin.php" class="text-decoration-none text-dark">
-                                Area Administrativa
-                            </a><br>
+                        <a href="mainPrivacy.php" class="text-decoration-none text-dark">
+                            Política de Privacidade
+                        </a><br>
+                        <a href="mainTerms.php" class="text-decoration-none text-dark">
+                            Termos de Uso
+                        </a><br>
+                        <a href="userAdmin.php" class="text-decoration-none text-dark">
+                            Area Administrativa
+                        </a><br>
                     </div>
                     <div class="col-12 col-md-4 text-center">
                         <a href="mainContato.php" class="text-decoration-none text-dark">

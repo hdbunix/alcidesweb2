@@ -16,8 +16,11 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="css/estilos.css" />
-
+    <?php session_start(); if (!$_SESSION['LogadoADM']) { ?>
     <title>Lojas Baratão - Base</title>
+    <?php } else { ?>
+        <title>ADMINISTRADOR</title>
+        <?php } ?>
 </head>
 
 <body>
@@ -79,13 +82,14 @@ exit;}?>
         <main class="flex-fill">
             <div class="container">
             <?php
-            include "connect.php";
-            $data = $_POST;
-            $qry = 'UPDATE usuarios_adm SET Nome ="'. $data['nomeuseradm'] .'", Login ="'. $data['useradm'] .'", Senha = md5("'. $data['senhauseradm'] . '") WHERE Codigo ='. $data['coduseradm'];
-            $pdo->exec($qry);
-            echo 'User alterado';
-            ?><br>
-            <button type="button" onclick="window.location.href='userAdminAreaAdm.php'" class="btn btn-lg btn-primary">Voltar</button>
+    include "connect.php";
+    $data = $_POST;
+    $qry = 'INSERT INTO `usuarios` (`Codigo`, `Nome`, `Login`, `Senha`) VALUES (NULL, "' . $data['nome'] . '", "' . $data['user'] . '", md5("' . $data['passwd'] . '"));';
+    $pdo->exec($qry);
+    echo 'Registro Gravado';
+    ?>
+    <a class="btn btn-lg btn-success" href="userAdminAreaUsersNew.php">Cadastrar Novo</a>
+    <a class="btn btn-lg btn-primary" href="userAdminAreaUsers.php">Voltar</a>
             </div>
         </main>
 
