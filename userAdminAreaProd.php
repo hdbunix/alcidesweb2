@@ -114,10 +114,11 @@ exit;}?>
                 </div>
             <?php
 echo '<table class="table table-hover table-striped" border=1>';
-?> <tr><th>Codigo </th><th>Produto </th><th>Descrição </th><th>Tipo </th><th>Preço </th><th>Estoque </th><th></th><th></th><th></th></tr> <?php
+?> <tr><th>Fotos </th><th>Codigo </th><th>Produto </th><th>Descrição </th><th>Tipo </th><th>Preço </th><th>Estoque </th><th></th><th></th><th></th></tr> <?php
 foreach ($lista_prod as $row) {
     
     echo '<tr>';
+    echo '<td><img style="width: 50px" src="img/prod/'.$row['CodigoEAN'].'.jpg" /></td>';
     echo '<td>' . $row['CodigoEAN'] . '</td><td>' . $row['Produto'] . '</td><td>' . $row['Descricao'] . '</td><td>' . $row['DescTipo'] . '</td><td>' . $row['Preco'] . '</td><td>' . $row['Estoque'] . '</td><td><a href="userAdminAreaProdDel.php?cod=' . $row['CodigoEAN'] . '"><i class="bi bi-trash"></i></a></td>';
     echo '<td><a href="userAdminAreaProdUp.php?cod=' . $row['CodigoEAN'] . '"><i class="bi bi-pencil"></i></a></td>';
     echo '<td><a href="userAdminAreaProdPhotoNew.php?cod='.$row['CodigoEAN'].'"><i class="bi bi-camera"></i></a></td>';    echo '</tr>';
