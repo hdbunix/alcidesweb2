@@ -76,8 +76,14 @@
             // Se usuário e senha não existem :
             // ------------------------------
             if (!$adm['Codigo']) {
-                echo '<b>Usuário não existe ou senha inválida.</b>';
-                echo '<br><a href="userAdmin.php">Voltar</a>';
+
+ echo '<main class="flex-fill">
+         <div class="container">
+            <div class="row g-3">
+     <p>Acesso negado</p>
+     <p><a href="userLogin.php" class="btn btn-lg btn-success">Logar</a></p>
+     </div></div></main>
+     <br><a href="userAdmin.php">Voltar</a>';
                 exit;
             } else {
                 $_SESSION['Codigo'] = $adm['Codigo'];
