@@ -78,8 +78,8 @@
                             </li>
                         <?php } ?>
                             <li class="nav-item">
-                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="<?php echo $x; ?> produto(s) no carrinho">
-                                    <small><?php echo $x ?></small>
+                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="<?php echo $_SESSION["nro_item"]+0; ?> produto(s) no carrinho">
+                                    <small><?php echo $_SESSION["nro_item"]+0; ?></small>
                                 </span>
                                 <a href="mainCart.php" class="nav-link text-white">
                                     <i class="bi-cart" style="font-size: 24px; line-height: 24px;"></i>

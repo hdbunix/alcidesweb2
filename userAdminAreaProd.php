@@ -54,8 +54,8 @@
                             </li>
                         <?php } ?>
                             <li class="nav-item">
-                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="<?php echo $x; ?> produto(s) no carrinho">
-                                    <small><?php echo $x ?></small>
+                                <span class="badge rounded-pill bg-light text-primary position-absolute ms-4 mt-1" title="<?php echo $_SESSION["nro_item"]+0; ?> produto(s) no carrinho">
+                                    <small><?php echo $_SESSION["nro_item"]+0; ?></small>
                                 </span>
                                 <a href="mainCart.php" class="nav-link text-white">
                                     <i class="bi-cart" style="font-size: 24px; line-height: 24px;"></i>
@@ -80,22 +80,17 @@ if (!$_SESSION['LogadoADM']) {
 exit;}?>
         <main class="flex-fill">
             <div class="container">
-    <a class="btn btn-primary" href="userAdminAreaProd.php">Limpar</a>
-    <a class="btn btn-primary" href="userAdminAreaProd.php?filter='Celulares'">Celulares</a>
-    <a class="btn btn-primary" href="userAdminAreaProd.php?filter='Televisores'">TVs</a>
-    <a class="btn btn-primary" href="userAdminAreaProd.php?filter='Notebooks'">Notebooks</a>
             <?php
 include "connect.php";
-$vardt="Notebooks";
-$lista_prod = $pdo->query('SELECT CodigoEAN, Produto, Descricao, DescTipo, Preco, Estoque FROM produtos INNER JOIN tipos_prod ON produtos.CodTipo=tipos_prod.CodTipo WHERE DescTipo="'.$vardt.'"');
+$lista_prod = $pdo->query('SELECT CodigoEAN, Produto, Descricao, DescTipo, Preco, Estoque FROM produtos INNER JOIN tipos_prod ON produtos.CodTipo=tipos_prod.CodTipo');
 echo '<table class="table table-hover table-striped" border=1>';
 ?> <tr><th>Codigo </th><th>Produto </th><th>Descrição </th><th>Tipo </th><th>Preço </th><th>Estoque </th><th></th><th></th><th></th></tr> <?php
 foreach ($lista_prod as $row) {
     
     echo '<tr>';
-    echo '<td>' . $row['CodigoEAN'] . '</td><td>' . $row['Produto'] . '</td><td>' . $row['Descricao'] . '</td><td>' . $row['DescTipo'] . '</td><td>' . $row['Preco'] . '</td><td>' . $row['Estoque'] . '</td><td><a href="userAdminAreaProdDel.php?cod=' . $row['CodigoEAN'] . '">Excluir</a></td>';
-    echo '<td><a href="userAdminAreaProdUp.php?cod=' . $row['CodigoEAN'] . '">Atualizar</a></td>';
-    echo '<td><a href="userAdminAreaProdPhotoNew.php?cod='.$row['CodigoEAN'].'">Adicionar foto</a></td>';    echo '</tr>';
+    echo '<td>' . $row['CodigoEAN'] . '</td><td>' . $row['Produto'] . '</td><td>' . $row['Descricao'] . '</td><td>' . $row['DescTipo'] . '</td><td>' . $row['Preco'] . '</td><td>' . $row['Estoque'] . '</td><td><a href="userAdminAreaProdDel.php?cod=' . $row['CodigoEAN'] . '"><i class="bi bi-trash"></i></a></td>';
+    echo '<td><a href="userAdminAreaProdUp.php?cod=' . $row['CodigoEAN'] . '"><i class="bi bi-pencil"></i></a></td>';
+    echo '<td><a href="userAdminAreaProdPhotoNew.php?cod='.$row['CodigoEAN'].'"><i class="bi bi-camera"></i></a></td>';    echo '</tr>';
 }
 echo '</table>';
 ?>

@@ -81,7 +81,7 @@ $qntprod = $alt_prod['Estoque'];
 ?>
 
 <form name="Geral" action="userAdminAreaProdUpChg.php" method="POST">
-    <p><img src="img/prod/<?php $codprod; ?>.jpg" width="200px"></p>
+    <p><img src="img/prod/<?php echo $codprod; ?>.jpg" width="200px"></p>
     <p>Código EAN: <input type="text" name="codprod" value="<?php echo $codprod; ?>" readonly></p>
     <p>Produto: <input type="text" name="nomeprod" value="<?php echo $nomprod; ?>"></p>
     <p>Descrição: <input type="text" name="descprod" value="<?php echo $dscprod; ?>"></p>
